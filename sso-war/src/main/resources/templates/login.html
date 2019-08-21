@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>sso登录系统</title>
     <style type="text/css">
         .login-page {
@@ -154,72 +154,15 @@
             <!--<button id="create">创建账户</button>-->
             <!--<p class="message">已经有了一个账户? <a href="#">立刻登录</a></p>-->
         <!--</form>-->
-        <form class="login-form" th:action="@{/login}" method="post">
-            <input type="text" placeholder="用户名" id="username"/>
-            <input type="password" placeholder="密码" id="password"/>
-            <button id="login">登　录</button>
+        <form class="login-form" action="/login" method="post">
+            <p style="color: red" th:text="${result}" th:if="${not #strings.isEmpty(result)}"></p>
+            <input type="text" placeholder="用户名" name="username"/>
+            <input type="password" placeholder="密码" name="password"/>
+            <button type="submit">登 录</button>
             <p class="message">还没有账户? <a href="#">立刻创建</a></p>
         </form>
-        <h1>th:text="${result}"</h1>
     </div>
 </div>
 <script src="js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript">
-    function check_login()
-    {
-        var name=$("#username").val();
-        var pass=$("#password").val();
-//        if(name=="admin" && pass=="admin")
-//        {
-//            alert("登录成功！");
-//            $("#username").val("");
-//            $("#password").val("");
-//
-//        }
-        else
-        {
-            $("#login_form").removeClass('shake_effect');
-            setTimeout(function()
-            {
-                $("#login_form").addClass('shake_effect')
-            },1);
-        }
-    }
-//    function check_register(){
-//        var name = $("#r_user_name").val();
-//        var pass = $("#r_password").val();
-//        var email = $("r_email").val();
-//        if(name!="" && pass=="" && email != "")
-//        {
-//            alert("注册成功！");
-//            $("#user_name").val("");
-//            $("#password").val("");
-//        }
-//        else
-//        {
-//            $("#login_form").removeClass('shake_effect');
-//            setTimeout(function()
-//            {
-//                $("#login_form").addClass('shake_effect')
-//            },1);
-//        }
-//    }
-    $(function(){
-//        $("#create").click(function(){
-//            check_register();
-//            return false;
-//        })
-        $("#login").click(function(){
-            check_login();
-            return false;
-        })
-        $('.message a').click(function () {
-            $('form').animate({
-                height: 'toggle',
-                opacity: 'toggle'
-            }, 'slow');
-        });
-    })
-</script>
 </body>
 </html>

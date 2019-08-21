@@ -11,13 +11,14 @@ import com.lihebin.sso.utils.MD5Util;
 import com.lihebin.sso.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by lihebin on 2019/8/16.
  */
+@Service
 public class LoginServiceImpl implements LoginService {
 
 

@@ -33,19 +33,19 @@ public class DataSourceConfig {
     }
 
 
-    @Bean(name= "manageDataSource")
-    @Primary
-    @Qualifier("manageDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.manage")
-    public DataSource manageDataSource() {
-        return DataSourceBuilder.create().type(DruidDataSource.class).build();
-    }
-
-
-    @Bean(name = "manageJdbcTemplate")
-    public JdbcTemplate manageJdbcTemplate(@Qualifier("manageDataSource") DataSource dataSource) {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.setQueryTimeout(3);
-        return jdbcTemplate;
-    }
+//    @Bean(name= "manageDataSource")
+//    @Primary
+//    @Qualifier("manageDataSource")
+//    @ConfigurationProperties(prefix = "spring.datasource.manage")
+//    public DataSource manageDataSource() {
+//        return DataSourceBuilder.create().type(DruidDataSource.class).build();
+//    }
+//
+//
+//    @Bean(name = "manageJdbcTemplate")
+//    public JdbcTemplate manageJdbcTemplate(@Qualifier("manageDataSource") DataSource dataSource) {
+//        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+//        jdbcTemplate.setQueryTimeout(3);
+//        return jdbcTemplate;
+//    }
 }

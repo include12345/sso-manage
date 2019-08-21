@@ -13,7 +13,7 @@ import java.util.Date;
  * Created by lihebin on 2019/4/16.
  */
 @Entity
-@Table(name = "sso_user")
+@Table(name = "user")
 @EntityListeners(AuditingEntityListener.class)
 public class SsoUser implements Serializable {
 

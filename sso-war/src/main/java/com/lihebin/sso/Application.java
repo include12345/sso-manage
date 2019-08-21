@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
-@ImportResource("classpath:spring/*.xml")
+//@ImportResource("classpath:spring/*.xml")
 @EnableScheduling
 @EnableJpaAuditing
 //@EnableCaching
