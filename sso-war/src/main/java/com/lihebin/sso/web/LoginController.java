@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -44,15 +45,16 @@ public class LoginController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/login")
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password, Map<String, Object> map, HttpServletRequest request, HttpServletResponse response) {
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request, HttpServletResponse response) {
         String uuid = CookieUtil.getCookie(request, "uuid");
         String originalUrl = CookieUtil.getCookie(request, "originalUrl");
         try {
             LoginRes loginRes = loginService.login(username, password, uuid);
             String rebackUrl = String.format("%s?token=%s", originalUrl, loginRes.getToken());
             response.sendRedirect(rebackUrl);
+//            response.setHeader("SET_TOKEN", loginRes.getToken());
         } catch (Exception e) {
-            map.put("result", e.getMessage());
+            request.setAttribute("result", e.getMessage());
             return "login";
         }
         return null;
